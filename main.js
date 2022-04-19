@@ -1,6 +1,7 @@
 var hundredths = 0
 var seconds = 0
 var minutes = 0
+var started = false
 
 var interval
 
@@ -13,16 +14,21 @@ function twoDigits (digit) {
 }
 
 function start(){
-    watch()
-    interval = setInterval(watch, 10)
+    if(!started) interval = setInterval(watch, 10)
+    started = true
 }
 
 function stop() {
     clearInterval(interval)
+    started = false
 }
 
 function reset() {
     clearInterval(interval)
+    hundredths = 0
+    seconds = 0
+    minutes = 0
+    started = false
     document.getElementById('time').innerText = '00:00:00'
 }
 
